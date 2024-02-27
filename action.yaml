@@ -1,0 +1,19 @@
+name: "cloudfront-invalidate-caches"
+description: "Invalidate caches for AWS cloudfront distribution"
+inputs:
+  cloudfront-distribution-id:
+    description: "The Id of a cloudfront distribution"
+    required: true
+  cloudfront-invalidation-path:
+    description: "Paths to invalidate in the cloudfront distribution, if there are multiple paths please split with ,"
+    required: true
+    default: /*
+  cloudfront-wait-for-service-update:
+    description: "Whether to wait for the cloudfront distribution to be updated"
+    required: false
+runs:
+  using: "python3.10"
+  main: "init.py"
+branding:
+  icon: cloud
+  color: blue
