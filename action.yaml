@@ -12,7 +12,9 @@ runs:
   using: "composite"
   steps:
   - shell: bash
-    run: python $GITHUB_ACTION_PATH/main.py
+    run: | 
+      pip install -r $GITHUB_ACTION_PATH/requirements.txt
+      python $GITHUB_ACTION_PATH/main.py ${{ inputs.cloudfront-distribution-id }} "${{ inputs.invalidation-paths }}"
 branding:
   icon: cloud
   color: blue

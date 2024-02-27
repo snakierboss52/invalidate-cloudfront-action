@@ -4,7 +4,7 @@ Whith this action you can request a invalidation of caches in one of your cloudf
 
 # Requirements
 
-*Previously you must have configured your action of AWS Credentials using your Access and Secret Key below you have an example of how can you do this*
+*Previously you must have configured your action of AWS Credentials using your Access and Secret Key. You have an example of how to do it below*
 
 ```
     - name: Setup AWS CLI
@@ -18,23 +18,23 @@ Whith this action you can request a invalidation of caches in one of your cloudf
 # Usage
 
 ```
-- name: Invalidate Caches from AWS Cloudfront Distribution
-  uses: snakierboss/cloudfront-invalidate-caches@v0.1.0
-  with:
-    cloudfront-distribution-id: *DISTRIBUTION_ID*
-    cloudfront-invalidation-path: '/*'
+    - name: Invalidate Caches from AWS Cloudfront Distribution
+      uses: snakierboss/cloudfront-invalidate-caches@v0.1.0
+        env:
+            cloudfront-distribution-id: *DISTRIBUTION_ID*
+            cloudfront-invalidation-path: '/*'
 ```
 
 # Inputs
 
 ```
-inputs:
-  cloudfront-distribution-id:
-    description: 'The Id of a your AWS Cloudfront distribution'
-    required: true
-  cloudfront-invalidation-path:
-    description: 'Path to invalidate in the cloudfront distribution'
-    required: true
-    default: '/*'
+    inputs:
+      cloudfront-distribution-id:
+        description: 'The Id of a your AWS Cloudfront distribution'
+        required: true
+      cloudfront-invalidation-path:
+        description: 'Path to invalidate in the cloudfront distribution'
+        required: true
+        default: '/*'
 ```
 

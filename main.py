@@ -3,8 +3,12 @@ import time, os, sys
  
 # Create CloudFront client
 cf = boto3.client('cloudfront')
+
+distribution_id = os.getenv('cloudfront-distribution-id')
+invalidation_path = os.getenv('cloudfront-invalidation-path')
   
 def create_invalidation_cache(distribution_id, invalidation_path):
+    print(f"Distribution id", distribution_id)
     res = cf.create_invalidation(
         DistributionId=distribution_id,
         InvalidationBatch={
@@ -21,5 +25,5 @@ def create_invalidation_cache(distribution_id, invalidation_path):
     return invalidation_id
  
 # Create CloudFront Invalidation
-id = create_invalidation_cache(sys.argv[1], sys.argv[2])
+id = create_invalidation_cache(distribution_id, invalidation_path)
 print("Invalidation created successfully with Id: " + id)
