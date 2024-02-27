@@ -11,7 +11,8 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: python $GITHUB_ACTION_PATH/main.py
+  - shell: bash
+    run: python $GITHUB_ACTION_PATH/main.py
 branding:
   icon: cloud
   color: blue
