@@ -8,12 +8,9 @@ inputs:
     description: "Paths to invalidate in the cloudfront distribution, if there are multiple paths please split with ,"
     required: true
     default: /*
-  cloudfront-wait-for-service-update:
-    description: "Whether to wait for the cloudfront distribution to be updated"
-    required: false
 runs:
   using: "python3.10"
-  main: "init.py"
+  main: "main.py"
 branding:
   icon: cloud
   color: blue
