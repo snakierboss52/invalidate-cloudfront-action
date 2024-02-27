@@ -9,8 +9,9 @@ inputs:
     required: true
     default: /*
 runs:
-  using: "python3.10"
-  main: "main.py"
+  using: "composite"
+  steps:
+    - run: python $GITHUB_ACTION_PATH/main.py
 branding:
   icon: cloud
   color: blue

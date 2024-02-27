@@ -21,8 +21,8 @@ Whith this action you can request a invalidation of caches in one of your cloudf
 - name: Invalidate Caches from AWS Cloudfront Distribution
   uses: snakierboss/cloudfront-invalidate-caches@v0.1.0
   with:
-    distribution-id: *DISTRIBUTION_ID*
-    paths: '/*'
+    cloudfront-distribution-id: *DISTRIBUTION_ID*
+    cloudfront-invalidation-path: '/*'
 ```
 
 # Inputs
