@@ -8,7 +8,6 @@ distribution_id = os.getenv('cloudfront-distribution-id')
 invalidation_path = os.getenv('cloudfront-invalidation-path')
   
 def create_invalidation_cache(distribution_id, invalidation_path):
-    print(f"Distribution id", distribution_id)
     res = cf.create_invalidation(
         DistributionId=distribution_id,
         InvalidationBatch={
@@ -26,4 +25,5 @@ def create_invalidation_cache(distribution_id, invalidation_path):
  
 # Create CloudFront Invalidation
 id = create_invalidation_cache(distribution_id, invalidation_path)
+os.environ['INVALIDATION_ID'] = id
 print("Invalidation created successfully with Id: " + id)

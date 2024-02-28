@@ -8,13 +8,19 @@ inputs:
     description: "Path to invalidate in the cloudfront distribution"
     required: true
     default: /*
+outputs:
+  invalidation_id:
+    description: "This output reffers to the invalidation id created in AWS Cloudfront"
+    value: ${{ steps.python-run.outputs.invalidation_id }}
 runs:
   using: "composite"
   steps:
   - shell: bash
+    id: python-run
     run: | 
       pip install -r $GITHUB_ACTION_PATH/requirements.txt
       python $GITHUB_ACTION_PATH/main.py ${{ inputs.cloudfront-distribution-id }} "${{ inputs.invalidation-paths }}"
+      echo $INVALIDATION_ID
 branding:
   icon: cloud
   color: blue
