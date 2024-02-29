@@ -4,8 +4,8 @@ import time, os, sys
 # Create CloudFront client
 cf = boto3.client('cloudfront')
 
-distribution_id = os.getenv('cloudfront-distribution-id')
-invalidation_path = os.getenv('cloudfront-invalidation-path')
+distribution_id = os.environ['INPUT_CLOUDFRONT-DISTRIBUTION-ID']
+invalidation_path = os.environ['INPUT_CLOUDFRONT-INVALIDATION-PATH']
   
 def create_invalidation_cache(distribution_id, invalidation_path):
     res = cf.create_invalidation(
@@ -25,4 +25,6 @@ def create_invalidation_cache(distribution_id, invalidation_path):
  
 # Create CloudFront Invalidation
 id = create_invalidation_cache(distribution_id, invalidation_path)
-print("Invalidation created successfully with Id: " + id)
+
+with open(os.environ['GITHUB_OUTPUT'], 'a') as gh_output:
+    print(f'invalidation-id={id}', file=gh_output)

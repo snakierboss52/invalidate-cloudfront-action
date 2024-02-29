@@ -1,6 +1,6 @@
 # Create invalidation caches in AWS Cloudfront
 
-Whith this action you can request a invalidation of caches in one of your cloudfront distribution
+With this action you can request a invalidation of caches in one of your cloudfront distribution
 
 # Requirements
 
@@ -20,9 +20,9 @@ Whith this action you can request a invalidation of caches in one of your cloudf
 ```
     - name: Invalidate Caches from AWS Cloudfront Distribution
       uses: snakierboss/cloudfront-invalidate-caches@v0.1.0
-        env:
-            cloudfront-distribution-id: *DISTRIBUTION_ID*
-            cloudfront-invalidation-path: '/*'
+      with:
+        cloudfront-distribution-id: *DISTRIBUTION_ID*
+        cloudfront-invalidation-path: '/*'
 ```
 
 # Inputs
@@ -36,5 +36,13 @@ Whith this action you can request a invalidation of caches in one of your cloudf
         description: 'Path to invalidate in the cloudfront distribution'
         required: true
         default: '/*'
+```
+
+# Outputs
+
+```
+  outputs:
+    invalidation-id:
+      description: 'The ID of invalidation caches created.'
 ```
 

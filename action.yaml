@@ -8,13 +8,12 @@ inputs:
     description: "Path to invalidate in the cloudfront distribution"
     required: true
     default: /*
+outputs:
+  invalidation-id:
+    description: 'The ID of invalidation caches created.'
 runs:
-  using: "composite"
-  steps:
-  - shell: bash
-    run: | 
-      pip install -r $GITHUB_ACTION_PATH/requirements.txt
-      python $GITHUB_ACTION_PATH/main.py ${{ inputs.cloudfront-distribution-id }} "${{ inputs.invalidation-paths }}"
+  using: 'docker'
+  image: 'Dockerfile'
 branding:
   icon: cloud
   color: blue
